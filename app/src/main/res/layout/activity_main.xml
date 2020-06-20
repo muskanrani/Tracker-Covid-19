@@ -22,6 +22,7 @@
         android:weightSum="2"
         >
         <org.eazegraph.lib.charts.PieChart
+            android:id="@+id/piechart"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:padding="8dp"
@@ -114,7 +115,7 @@
         android:layout_height="match_parent">
 
         <com.leo.simplearcloader.SimpleArcLoader
-            android:visibility="gone"
+            android:visibility="visible"
             android:id="@+id/loader"
             android:layout_centerInParent="true"
             android:layout_width="60dp"
@@ -125,7 +126,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/scrollStats"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -418,7 +419,8 @@
                         android:textColor="@color/color_one"
                         android:textStyle="bold"
                         android:fontFamily="sans-serif-light"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="end" />
 
                 </RelativeLayout>
                 <View
