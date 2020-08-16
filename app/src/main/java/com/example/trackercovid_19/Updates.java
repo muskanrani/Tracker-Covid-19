@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -17,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.leo.simplearcloader.SimpleArcLoader;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,12 +36,15 @@ public class Updates extends AppCompatActivity {
     ArrayList<String> post_description = new ArrayList<String>();
     ArrayList<String> post_image = new ArrayList<String>();
     int total;
+    SimpleArcLoader simpleArcLoader;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_updates);
         requestQueue = Volley.newRequestQueue(this);
-        fetchdata();
+
+        simpleArcLoader = findViewById(R.id.loader);
+        simpleArcLoader.start();
         //Initialize
         BottomNavigationView bottomNavigationView =  findViewById(R.id.bottom_navigation);
 
@@ -73,6 +78,8 @@ public class Updates extends AppCompatActivity {
                 return false;
             }
         });
+
+        fetchdata();
     }
 
     private void fetchdata() {
@@ -81,25 +88,26 @@ public class Updates extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    for (int i = 0; i < 5; i++) {
+                    total= Integer.parseInt(response.getString("totalResults"));
+                    for (int i = 0; i < 20; i++) {
 
                         post_title.add(response.getJSONArray("articles").getJSONObject(i).getString("title"));
 
                     }
 
 
-                    for (int i = 0; i < 5; i++) {
+                    for (int i = 0; i < 20; i++) {
 
                         post_author.add(response.getJSONArray("articles").getJSONObject(i).getString("author"));
 
                     }
 
 
-                    for (int i = 0; i < 5; i++) {
+                    for (int i = 0; i < 20; i++) {
                         post_description.add(response.getJSONArray("articles").getJSONObject(i).getString("description"));
                     }
 
-                    for (int i = 0; i < total; i++) {
+                    for (int i = 0; i < 20; i++) {
 
                         post_image.add(response.getJSONArray("articles").getJSONObject(i).getString("urlToImage"));
 
@@ -133,7 +141,7 @@ public class Updates extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         RecyclerView.Adapter adapter = new NewsAdapter(this,post_title,post_image,post_description,post_author);
         recyclerView.setAdapter(adapter);
-
+        simpleArcLoader.setVisibility(View.GONE);
 
 
     }

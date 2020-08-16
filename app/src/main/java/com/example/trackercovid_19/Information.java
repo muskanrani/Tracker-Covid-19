@@ -8,22 +8,25 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.leo.simplearcloader.SimpleArcLoader;
 
 public class Information extends AppCompatActivity {
-
-
+    SimpleArcLoader simpleArcLoader;
     String html="<iframe width=\"100%\" height=\"100%\" src=\"https://maps.mapmyindia.com/covid-19?graph\"></iframe>";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information);
         WebView webView = findViewById(R.id.webView);
+        simpleArcLoader = findViewById(R.id.loader);
+        simpleArcLoader.start();
         //Initialize
         BottomNavigationView bottomNavigationView =  findViewById(R.id.bottom_navigation);
 
@@ -64,6 +67,7 @@ public class Information extends AppCompatActivity {
 
        // webView.loadUrl(html);
         webView.loadData(html, "text/html", null);
+        simpleArcLoader.setVisibility(View.GONE);
 
         }
     private class MyBrowser extends WebViewClient {
