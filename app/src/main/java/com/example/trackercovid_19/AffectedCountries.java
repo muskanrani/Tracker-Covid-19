@@ -20,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.leo.simplearcloader.SimpleArcLoader;
 
 import org.json.JSONArray;
@@ -51,6 +52,39 @@ public class AffectedCountries extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        //Initialize
+        BottomNavigationView bottomNavigationView =  findViewById(R.id.bottom_navigation);
+
+        //set home selected
+        bottomNavigationView.setSelectedItemId(R.id.search);
+
+        //perform ItemSelectedListener
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.search:
+                        return true;
+                    case R.id.info:
+                        startActivity(new Intent(getApplicationContext(),
+                                Information.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.updates:
+                        startActivity(new Intent(getApplicationContext(),
+                                Updates.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.dashboard:
+                        startActivity(new Intent(getApplicationContext(),
+                                MainActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
 
         fetchData();
 

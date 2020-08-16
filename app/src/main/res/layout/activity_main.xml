@@ -105,7 +105,7 @@
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     android:layout_below="@+id/cardViewGraph"
-    android:layout_above="@+id/btnTrack"
+    android:layout_above="@+id/bottom_navigation"
     android:layout_margin="12dp"
     app:cardElevation="10dp"
     app:cardCornerRadius="10dp"
@@ -172,11 +172,11 @@
                         android:id="@+id/tvCases"
                         android:textAlignment="textEnd"
                         android:textSize="18sp"
-
                         android:textColor="@color/color_one"
                         android:textStyle="bold"
                         android:fontFamily="sans-serif-light"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:gravity="end" />
 
                 </RelativeLayout>
                 <View
@@ -210,7 +210,8 @@
                         android:textColor="@color/color_one"
                         android:textStyle="bold"
                         android:fontFamily="sans-serif-light"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:gravity="end" />
 
                 </RelativeLayout>
                 <View
@@ -241,11 +242,11 @@
                         android:id="@+id/tvCritical"
                         android:textAlignment="textEnd"
                         android:textSize="18sp"
-
                         android:textColor="@color/color_one"
                         android:textStyle="bold"
                         android:fontFamily="sans-serif-light"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:gravity="end" />
 
                 </RelativeLayout>
                 <View
@@ -280,7 +281,8 @@
                         android:textColor="@color/color_one"
                         android:textStyle="bold"
                         android:fontFamily="sans-serif-light"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:gravity="end" />
 
                 </RelativeLayout>
                 <View
@@ -315,7 +317,8 @@
                         android:textColor="@color/color_one"
                         android:textStyle="bold"
                         android:fontFamily="sans-serif-light"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:gravity="end" />
 
                 </RelativeLayout>
                 <View
@@ -346,11 +349,11 @@
                         android:id="@+id/tvTotalDeaths"
                         android:textAlignment="textEnd"
                         android:textSize="18sp"
-
                         android:textColor="@color/color_one"
                         android:textStyle="bold"
                         android:fontFamily="sans-serif-light"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:gravity="end" />
 
                 </RelativeLayout>
                 <View
@@ -385,7 +388,8 @@
                         android:textColor="@color/color_one"
                         android:textStyle="bold"
                         android:fontFamily="sans-serif-light"
-                        android:layout_alignParentRight="true"/>
+                        android:layout_alignParentRight="true"
+                        android:gravity="end" />
 
                 </RelativeLayout>
                 <View
@@ -437,18 +441,14 @@
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
-    <Button
-        android:id="@+id/btnTrack"
-        android:onClick="goTrackCountries"
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="#96bb7c"
-        android:text="Track Countries"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:padding="6dp"/>
+        android:id="@+id/bottom_navigation"
+        app:itemBackground="@color/colorPrimaryDark"
+        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/selector"
+        app:menu="@menu/menu_navigation"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

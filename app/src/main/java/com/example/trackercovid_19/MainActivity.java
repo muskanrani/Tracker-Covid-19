@@ -1,10 +1,12 @@
 package com.example.trackercovid_19;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -16,6 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.leo.simplearcloader.SimpleArcLoader;
 
 import org.eazegraph.lib.charts.PieChart;
@@ -45,6 +48,40 @@ public class MainActivity extends AppCompatActivity {
         simpleArcLoader = findViewById(R.id.loader);
         scrollView = findViewById(R.id.scrollStats);
         pieChart = findViewById(R.id.piechart);
+
+        //Initialize
+        BottomNavigationView bottomNavigationView =  findViewById(R.id.bottom_navigation);
+
+        //set home selected
+        bottomNavigationView.setSelectedItemId(R.id.dashboard);
+
+        //perform ItemSelectedListener
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.dashboard:
+                        return true;
+                    case R.id.search:
+                        startActivity(new Intent(getApplicationContext(),
+                                AffectedCountries.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.info:
+                        startActivity(new Intent(getApplicationContext(),
+                                Information.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.updates:
+                        startActivity(new Intent(getApplicationContext(),
+                                Updates.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
 
 
         fetchData();
@@ -103,8 +140,6 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(request);
 
     }
-    public void goTrackCountries(View view) {
-        startActivity(new Intent(getApplicationContext(),AffectedCountries.class));
-    }
+
 }
 
