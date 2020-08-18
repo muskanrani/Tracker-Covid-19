@@ -9,6 +9,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -19,7 +20,7 @@ import com.leo.simplearcloader.SimpleArcLoader;
 
 public class Information extends AppCompatActivity {
     SimpleArcLoader simpleArcLoader;
-    String html="<iframe width=\"100%\" height=\"100%\" src=\"https://maps.mapmyindia.com/covid-19?graph\"></iframe>";
+    String html="<iframe width=\"100%\" height=\"100%\" src=\"https://maps.mapmyindia.com/corona?safety_alert\"></iframe>";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,11 +47,11 @@ public class Information extends AppCompatActivity {
                                 Updates.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.search:
-                        startActivity(new Intent(getApplicationContext(),
-                                AffectedCountries.class));
-                        overridePendingTransition(0,0);
-                        return true;
+//                    case R.id.search:
+//                        startActivity(new Intent(getApplicationContext(),
+//                                AffectedCountries.class));
+//                        overridePendingTransition(0,0);
+//                        return true;
                     case R.id.dashboard:
                         startActivity(new Intent(getApplicationContext(),
                                 MainActivity.class));
@@ -75,6 +76,16 @@ public class Information extends AppCompatActivity {
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             view.loadUrl(url);
             return true;
+        }
+    }
+
+    public class abc extends WebChromeClient {
+        @Override
+        public void onGeolocationPermissionsShowPrompt(String origin,
+                                                       GeolocationPermissions.Callback callback) {
+            // Always grant permission since the app itself requires location
+            // permission and the user has therefore already granted it
+            callback.invoke(origin, true, false);
         }
     }
 }

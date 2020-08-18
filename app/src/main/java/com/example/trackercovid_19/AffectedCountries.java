@@ -56,7 +56,7 @@ public class AffectedCountries extends AppCompatActivity {
         BottomNavigationView bottomNavigationView =  findViewById(R.id.bottom_navigation);
 
         //set home selected
-        bottomNavigationView.setSelectedItemId(R.id.search);
+//        bottomNavigationView.setSelectedItemId(R.id.search);
 
         //perform ItemSelectedListener
 
@@ -64,8 +64,8 @@ public class AffectedCountries extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
-                    case R.id.search:
-                        return true;
+//                    case R.id.search:
+//                        return true;
                     case R.id.info:
                         startActivity(new Intent(getApplicationContext(),
                                 Information.class));

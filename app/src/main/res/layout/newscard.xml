@@ -8,29 +8,33 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="4dp"
         app:cardMaxElevation="2dp"
-        app:cardElevation="1dp"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="10dp"
         android:layout_margin="12dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/title"
-                android:textSize="30dp"
-                android:text="Title"
-                android:textColor="#000"
-                android:textStyle="bold"/>
-
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/postImage"
-                android:padding="5dp"/>
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/title"
+                android:textSize="20sp"
+                android:text="Title"
+                android:padding="5dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed"
+                />
+
+
 
             <TextView
                 android:layout_width="match_parent"
@@ -39,14 +43,18 @@
                 android:text="Description of post"
                 android:textColor="#000"
                 android:justificationMode="inter_word"
-                android:textSize="18dp"/>
+                android:padding="5dp"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="16dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Author:"
+                android:text="Source:"
                 android:textColor="#000"
-                android:textSize="18dp"
+                android:textSize="16dp"
+                android:padding="5dp"
                 android:textStyle="bold"
+                android:fontFamily="serif-monospace"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -54,8 +62,10 @@
                 android:id="@+id/author"
                 android:text="AuthorName"
                 android:textColor="#000"
-                android:textSize="18dp"
-                android:textStyle="bold"/>
+                android:textSize="16dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="sans-serif-smallcaps"/>
 
 
 

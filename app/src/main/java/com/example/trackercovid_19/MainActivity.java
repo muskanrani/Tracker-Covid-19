@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,11 +64,11 @@ public class MainActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()){
                     case R.id.dashboard:
                         return true;
-                    case R.id.search:
-                        startActivity(new Intent(getApplicationContext(),
-                                AffectedCountries.class));
-                        overridePendingTransition(0,0);
-                        return true;
+//                    case R.id.search:
+//                        startActivity(new Intent(getApplicationContext(),
+//                                AffectedCountries.class));
+//                        overridePendingTransition(0,0);
+//                        return true;
                     case R.id.info:
                         startActivity(new Intent(getApplicationContext(),
                                 Information.class));

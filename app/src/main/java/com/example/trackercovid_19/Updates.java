@@ -64,11 +64,11 @@ public class Updates extends AppCompatActivity {
                                 Information.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.search:
-                        startActivity(new Intent(getApplicationContext(),
-                                AffectedCountries.class));
-                        overridePendingTransition(0,0);
-                        return true;
+//                    case R.id.search:
+//                        startActivity(new Intent(getApplicationContext(),
+//                                AffectedCountries.class));
+//                        overridePendingTransition(0,0);
+//                        return true;
                     case R.id.dashboard:
                         startActivity(new Intent(getApplicationContext(),
                                 MainActivity.class));
@@ -83,7 +83,7 @@ public class Updates extends AppCompatActivity {
     }
 
     private void fetchdata() {
-        String url="https://newsapi.org/v2/top-headlines?q=corona&apiKey=6d0da98715da49f9a6399d3ac7656259";
+        String url="http://newsapi.org/v2/everything?top-headlines?country=in&q=corona&apiKey=6d0da98715da49f9a6399d3ac7656259";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
