@@ -62,16 +62,18 @@ public class Information extends AppCompatActivity {
             }
         });
 
-        webView.setWebViewClient(new MyBrowser());
+        webView.setWebViewClient(new information());
         webView.getSettings().setLoadsImagesAutomatically(true);
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setGeolocationEnabled(true);
 
        // webView.loadUrl(html);
         webView.loadData(html, "text/html", null);
         simpleArcLoader.setVisibility(View.GONE);
-
         }
-    private class MyBrowser extends WebViewClient {
+
+
+    private class information extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             view.loadUrl(url);
@@ -79,13 +81,4 @@ public class Information extends AppCompatActivity {
         }
     }
 
-    public class abc extends WebChromeClient {
-        @Override
-        public void onGeolocationPermissionsShowPrompt(String origin,
-                                                       GeolocationPermissions.Callback callback) {
-            // Always grant permission since the app itself requires location
-            // permission and the user has therefore already granted it
-            callback.invoke(origin, true, false);
-        }
     }
-}
